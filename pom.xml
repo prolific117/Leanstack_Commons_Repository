@@ -9,6 +9,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven-ejb-plugin.version>2.3</maven-ejb-plugin.version>
     </properties>
@@ -64,4 +65,59 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
+    
+
+    <build>
+        <resources>
+                <resource>
+                        <!-- Copy wicket HTML and other resource files from the java directory -->
+                        <filtering>false</filtering>
+                        <directory>${basedir}/src/main/java</directory>
+                        <includes> 
+                                <include>*.properties</include>
+                                <include>**/*.properties</include>
+                                <include>**/*.html</include>
+                                <include>**/*.js</include>
+                                <include>**/*.png</include>
+                                <include>**/*.css</include>
+                                <include>**/*.jpg</include>
+                                <include>**/*.properties</include>
+                        </includes>
+                        <excludes>
+                                <exclude>**/*.java</exclude>
+                        </excludes>
+                </resource>
+                <resource>
+                        <directory>${basedir}/src/main/resources</directory>
+                </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-ejb-plugin</artifactId>
+                <version>${maven-ejb-plugin.version}</version>
+                <configuration>
+                    <ejbVersion>3.2</ejbVersion>
+                    <archive>
+                        <manifest>
+                                <addClasspath>true</addClasspath>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <compilerArguments>
+                        <endorseddirs>${endorsed.dir}</endorseddirs>
+                    </compilerArguments>
+                    <showDeprecation>true</showDeprecation>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
