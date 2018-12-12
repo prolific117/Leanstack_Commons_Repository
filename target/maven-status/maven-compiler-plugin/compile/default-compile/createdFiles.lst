@@ -5,6 +5,7 @@ com/proxy/leanstack/commons/repository/AbstractRepositoryModel.class
 com/proxy/leanstack/commons/repository/Repository.class
 com/proxy/leanstack/commons/security/CommonsServletRequest$1.class
 com/proxy/leanstack/commons/repository/RedisRepo.class
+com/proxy/leanstack/commons/security/Serializable.class
 com/proxy/leanstack/commons/security/SessionDetailProvider.class
 com/proxy/leanstack/commons/filter/BaseFilter.class
 com/proxy/leanstack/commons/base/StartupInspection.class
